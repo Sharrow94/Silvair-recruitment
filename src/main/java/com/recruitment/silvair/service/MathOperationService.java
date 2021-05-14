@@ -1,6 +1,10 @@
 package com.recruitment.silvair.service;
 
+import com.recruitment.silvair.model.MathOperation;
+
 public interface MathOperationService {
+
+    void add(MathOperation operation);
 
     float addition(float a,float b);
     float subtraction(float a,float b);

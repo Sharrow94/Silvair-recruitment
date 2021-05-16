@@ -15,7 +15,7 @@ public class MathOperation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private float score;
+    private double score;
     private TypeOfOperation typeOfOperation;
     @DateTimeFormat()
     private LocalDateTime dateOfAdding;

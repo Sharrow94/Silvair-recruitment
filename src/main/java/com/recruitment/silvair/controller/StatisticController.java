@@ -25,7 +25,7 @@ public class StatisticController {
     }
 
     @GetMapping("/forLastDay")
-    public double statForLastDay(@RequestParam("type")int type){
+    public double statForLastDay(@RequestParam("type")int type)throws IllegalArgumentException{
         return mathOperationService.statForLastDay(type);
     }
 }

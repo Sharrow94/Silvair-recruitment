@@ -24,9 +24,9 @@ public class MathOperationServiceImpl implements MathOperationService {
     }
 
     @Override
-    public float addition(float a, float b) {
+    public double addition(double a, double b) {
         MathOperation operation = new MathOperation();
-        float score = a + b;
+        double score = a + b;
         operation.setScore(score);
         operation.setTypeOfOperation(TypeOfOperation.addition);
         operation.setDateOfAdding(LocalDateTime.now());
@@ -35,9 +35,9 @@ public class MathOperationServiceImpl implements MathOperationService {
     }
 
     @Override
-    public float subtraction(float a, float b) {
+    public double subtraction(double a, double b) {
         MathOperation operation = new MathOperation();
-        float score = a - b;
+        double score = a - b;
         operation.setScore(score);
         operation.setTypeOfOperation(TypeOfOperation.subtraction);
         operation.setDateOfAdding(LocalDateTime.now());
@@ -46,12 +46,12 @@ public class MathOperationServiceImpl implements MathOperationService {
     }
 
     @Override
-    public float division(float a, float b) {
+    public double division(double a, double b) {
         if (b == 0) {
             throw new ArithmeticException("Can't divide by 0.");
         }
         MathOperation operation = new MathOperation();
-        float score = a / b;
+        double score = a / b;
         operation.setScore(score);
         operation.setTypeOfOperation(TypeOfOperation.division);
         operation.setDateOfAdding(LocalDateTime.now());
@@ -60,9 +60,9 @@ public class MathOperationServiceImpl implements MathOperationService {
     }
 
     @Override
-    public float multiplication(float a, float b) {
+    public double multiplication(double a, double b) {
         MathOperation operation = new MathOperation();
-        float score = a * b;
+        double score = a * b;
         operation.setScore(score);
         operation.setTypeOfOperation(TypeOfOperation.multiplication);
         operation.setDateOfAdding(LocalDateTime.now());
@@ -80,7 +80,7 @@ public class MathOperationServiceImpl implements MathOperationService {
         if (typeOfOperation < 0 || typeOfOperation > 4) {
             throw new IllegalArgumentException("Select from: addition=0,subtraction=1,multiplication=2,division=3");
         }
-        return mathOperationRepository.getStatForLastMin(typeOfOperation);
+        return mathOperationRepository.getStatForLastMin(typeOfOperation)/60.0;
     }
 
     @Override
@@ -88,14 +88,14 @@ public class MathOperationServiceImpl implements MathOperationService {
         if (typeOfOperation < 0 || typeOfOperation > 4) {
             throw new IllegalArgumentException("Select from: addition=0,subtraction=1,multiplication=2,division=3");
         }
-        return mathOperationRepository.getStatForLastH(typeOfOperation);
+        return mathOperationRepository.getStatForLastH(typeOfOperation)/3600.0;
     }
 
     @Override
-    public double statForLastDay(int typeOfOperation) {
+    public double statForLastDay(int typeOfOperation) throws IllegalArgumentException{
         if (typeOfOperation < 0 || typeOfOperation > 4) {
             throw new IllegalArgumentException("Select from: addition=0,subtraction=1,multiplication=2,division=3");
         }
-        return mathOperationRepository.getStatForLastDay(typeOfOperation);
+        return mathOperationRepository.getStatForLastDay(typeOfOperation)/86400.0;
     }
 }

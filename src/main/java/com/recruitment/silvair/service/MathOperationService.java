@@ -6,10 +6,10 @@ public interface MathOperationService {
 
     void add(MathOperation operation);
 
-    float addition(float a,float b);
-    float subtraction(float a,float b);
-    float division(float a,float b);
-    float multiplication(float a,float b);
+    double addition(double a,double b);
+    double subtraction(double a,double b);
+    double division(double a,double b);
+    double multiplication(double a,double b);
 
     double getSumOfLastTenResults();
 
